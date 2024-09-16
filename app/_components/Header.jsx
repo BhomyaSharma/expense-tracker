@@ -1,8 +1,11 @@
+"use client"
 import React from 'react'
-import Image from 'next/image'
-import { Button } from '@/components/ui/button'
+import Image from "next/image";
+import { Button } from '@/components/ui/button';
+import {useUser,UserButton }from "@clerk/nextjs";
+import Link from 'next/Link';
 function Header() {
-  const
+  const {user,isSignedIn}=useUser();
   return (
     <div className='p-5 flex justify-between items-center border shadow-md'>
       <Image src ={'./logo.svg'}
@@ -10,7 +13,13 @@ function Header() {
       width={60}
       height={60}
       />
-      <Button>Get Started</Button>
+      {isSignedIn?
+      <UserButton/> : 
+      <Link href={'/sign-in'}>
+        <Button>Get Started</Button>
+        </Link>
+      }
+      
       
     </div>
   )
