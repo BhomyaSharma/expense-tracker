@@ -1,8 +1,13 @@
-export default {
-  schema: "./utils/schema.jsx",  // Path to your schema
-  driver: 'pg',                  // Correct driver for PostgreSQL
-  dialect: 'postgresql',          // Correct dialect spelling
-  dbCredentials: {                // Database credentials
-    connectionString: 'postgresql://neons_owner:bUfG5DAL3nzE@ep-wispy-night-a5srafgy.us-east-2.aws.neon.tech/Expense-Traacker?sslmode=require',
+import { config } from 'dotenv';
+import { defineConfig } from "drizzle-kit";
+
+config({ path: '.env' });
+
+export default defineConfig({
+  schema: "./db/schema.js",
+  out: "./migrations",
+  dialect: "postgresql",
+  dbCredentials: {
+    url: process.env.NEXT_PUBLIC_DATABASE_URL,
   },
-};
+});

@@ -1,17 +1,17 @@
 "use client"
 import React, { useEffect } from 'react'
 import SideNav from './_components/SideNav'
-import DashboardHeader from './_components/DashboardHeader'
-
-import { Budgets } from '@/utils/schema'
+import { Budgets } from '@/db/schema.js'
 import { useUser } from '@clerk/nextjs'
 import { eq } from 'drizzle-orm'
-import Router from 'next/router'
-import { db } from '@/utils/dbConfig'
+
+import { db } from '@/db/drizzle'
+import DashboardHeader from './_components/DashboardHeader'
+import { useRouter } from 'next/navigation'
 
 function DashboardLayout({ children }) {
   const { user } = useUser(); // Destructuring user from useUser
-
+  const router = useRouter();
   useEffect(() => {
     if (user) {
       checkUserBudgets();
@@ -27,7 +27,7 @@ function DashboardLayout({ children }) {
 
     console.log(result);
     if (result?.length === 0) {
-      Router.replace('/dashboard/budgets');
+      router.replace('/dashboard/budgets');
     }
   };
 
@@ -37,7 +37,7 @@ function DashboardLayout({ children }) {
         <SideNav />
       </div>
       <div className='md:ml-64'>
-        <DashboardHeader />
+        <DashboardHeader/>
         {children}
       </div>
     </div>

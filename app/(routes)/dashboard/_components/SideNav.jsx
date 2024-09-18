@@ -45,8 +45,9 @@ function SideNav() {
     <div className="h-screen p-5 border shadow-sm">
       <Image src={'/logo.svg'} alt="logo" width={100} height={50} />
       <div className="mt-5">
-        {menuList.map((menu,index) => (
-          <Link href={menu.path}>
+        {menuList?.map((menu,index) => (
+
+          <Link map={menu.path} href={menu.path} key={menu.id}>
             <h2
               className={`flex gap-2 items-center
                  text-gray-500 font-medium

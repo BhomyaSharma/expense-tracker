@@ -2,17 +2,20 @@
 import React, { useEffect, useState } from 'react'
 import { UserButton, useUser } from '@clerk/nextjs'
 import CardInfo from './_components/CardInfo';
-import { db } from '@/utils/dbConfig';
+import { db } from '@/db/drizzle';
 import { desc, eq, getTableColumns, sql } from 'drizzle-orm';
-import { Budgets, Expenses } from '@/utils/schema';
+import { Budgets, Expenses } from '@/db/schema';
 import BarChartDashboard from './budgets/_components/BarChartDashboard';
 import Budget from './budgets/page';
 import BudgetItem from './budgets/_components/BudgetItem';
 function Dashboard() {
   const {user}=useUser();
   const [budgetList,setBudgetList]=useState([]);
+  
+
+
   useEffect(()=>{
-    user&&getBudgetList();
+    getBudgetList();
 
 
   },[user])
@@ -35,7 +38,7 @@ function Dashboard() {
     .orderBy(desc(Budgets.id))
     ;
     setBudgetList(result);
-
+     console.log(result)
     
   }
 
@@ -50,12 +53,12 @@ function Dashboard() {
         
         <div className='grid grid-cols-1 md:grid-cols-3 mt-6'>
           <div className='md:col-span-2'>
-            <BarChartDashboard
-              budgetList={budgetList}/>
+              <BarChartDashboard
+                budgetList={budgetList}/>
 
           </div>
           <div>
-            {budgetList.map((budget,index)=>(
+            {budgetList?.map((budget,index)=>(
               <BudgetItem budget={budget} key={index}/>
 
             ))}

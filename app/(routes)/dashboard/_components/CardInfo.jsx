@@ -5,8 +5,11 @@ function CardInfo({budgetList}) {
 
         const [totalBudget,setTotalBudget]=useState(0);
         const [totalSpend,setTotalSpend]=useState(0);
+
+
+
         useEffect(()=>{
-            budgetList&&CalculateCardInfo();
+            budgetList && CalculateCardInfo();
         },[budgetList])
         const CalculateCardInfo=()=>{
             console.log(budgetList);
@@ -56,7 +59,7 @@ function CardInfo({budgetList}) {
 
     <div className='mt-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
         {[1,2,3].map((item,index)=>(
-            <div className='h-[110px] w-full bg-slate-200 animate-pulse rounded-lg'>
+            <div key={index} className='h-[110px] w-full bg-slate-200 animate-pulse rounded-lg'>
 
             </div>
 
