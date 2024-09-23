@@ -1,5 +1,5 @@
-import { db } from '@/utils/dbConfig'
-import { Expenses } from '@/utils/schema'
+import { db } from '@/db/drizzle'
+import { Expenses } from '@/db/schema'
 import { eq } from 'drizzle-orm'
 import { Trash } from 'lucide-react'
 import React from 'react'

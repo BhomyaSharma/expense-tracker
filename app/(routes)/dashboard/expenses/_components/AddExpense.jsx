@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { db } from '@/utils/dbConfig';
-import { Budgets } from '@/utils/schema';
-import React, { useState } from 'react'
+import { db } from '@/db/drizzle';
+import { Budgets } from '@/db/schema';
+import React, { useState } from 'react';
 import { toast } from 'sonner';
 
 function AddExpense(budgetId,user,refreshData) {
@@ -13,7 +13,7 @@ function AddExpense(budgetId,user,refreshData) {
         const result=await db.insert(Expenses).values({
             name:name,
             amount:amount,
-            budgetId:budgetId,
+            budgetId:param,
             createdAt:moment().format('DD/MM/yyy')
 
         }).returning({insertedId:Budgets.id});

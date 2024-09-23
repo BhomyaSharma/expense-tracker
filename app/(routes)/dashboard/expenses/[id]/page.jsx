@@ -1,7 +1,7 @@
 "use client"
 import { Button } from '@/components/ui/button';
-import { db } from '@/utils/dbConfig';
-import { Budgets, Expenses } from '@/utils/schema';
+import { db } from '@/db/drizzle';
+import { Budgets, Expenses } from '@/db/schema';
 import { useUser } from '@clerk/nextjs';
 import { eq, getTableColumns, sql } from 'drizzle-orm';
 import { Trash } from 'lucide-react';
@@ -9,6 +9,8 @@ import React, {useEffect, useState} from 'react'
 import BudgetItem from '../../budgets/_components/BudgetItem';
 import AddExpense from '../_components/AddExpense';
 import ExpenseListTable from '../_components/ExpenseListTable';
+import { useRouter } from 'next/navigation';
+
 import {
     AlertDialog,
     AlertDialogAction,
