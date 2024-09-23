@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { db } from '@/db/drizzle';
 import { Budgets, Expenses } from '@/db/schema';
 import { useUser } from '@clerk/nextjs';
-import { eq, getTableColumns, sql } from 'drizzle-orm';
+import { eq, getTableColumns, sql, desc } from 'drizzle-orm';
 import { Trash } from 'lucide-react';
 import React, {useEffect, useState} from 'react'
 import BudgetItem from '../../budgets/_components/BudgetItem';
@@ -48,7 +48,7 @@ function ExpensesScreen({params}) {
           .leftJoin(Expenses,eq(Budgets.id,Expenses.budgetId))
           .where(eq(Budgets.createdBy,user?.primaryEmailAddress?.emailAddress))
           .where(eq(Budgets.id,params.id))
-          .grupBy(Budgets.id)
+          .groupBy(Budgets.id)
           
           setBudgetInfo(result[0]);
           getExpensesList();
