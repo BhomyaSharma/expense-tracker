@@ -6,8 +6,8 @@ function BarChartDashboard(budgetList) {
 
   const data = [
     { id: 5, name: 'Shopping', amount: 100000, icon: '😍', createdBy: 'bhomya224.be22@chitkara.edu.in' },
-    { id: 4, name: 'weeknd', amount: 1222, icon: '🦄', createdBy: 'bhomya224.be22@chitkara.edu.in' },
-    { id: 3, name: 'sadsa', amount: 2131, icon: '🌐', createdBy: 'bhomya224.be22@chitkara.edu.in' }
+    { id: 4, name: 'weeknd', amount: 52220, icon: '🦄', createdBy: 'bhomya224.be22@chitkara.edu.in' },
+    { id: 3, name: 'sadsa', amount: 21300, icon: '🌐', createdBy: 'bhomya224.be22@chitkara.edu.in' }
   ];
 
 
