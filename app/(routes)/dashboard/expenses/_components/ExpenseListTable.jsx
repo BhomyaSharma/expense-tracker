@@ -71,7 +71,7 @@ function ExpenseListTable({ expensesList, refreshData }) { // Destructure props
         <h2 className='font-bold'>Name</h2>
         <h2 className='font-bold'>Amount</h2>
         <h2 className='font-bold'>Date</h2>
-        <h2 className='font-bold'>Action</h2>
+         <h2 className='font-bold'>Action</h2> 
       </div>
       {Array.isArray(expensesList) && expensesList.length > 0 ? (
         expensesList.map((expenses, index) => (
