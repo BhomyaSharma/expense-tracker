@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from "next/Image";
+import Image from "next/image";
 function Hero() {
   return (
     <section className="bg-gray-50 flex items-center flex-col">

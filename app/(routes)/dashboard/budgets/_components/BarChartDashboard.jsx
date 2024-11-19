@@ -5,9 +5,10 @@ function BarChartDashboard(budgetList) {
   console.log(budgetList[0])
 
   const data = [
-    { id: 5, name: 'Shopping', amount: 100000, icon: '😍', createdBy: 'bhomya224.be22@chitkara.edu.in' },
-    { id: 4, name: 'weeknd', amount: 52220, icon: '🦄', createdBy: 'bhomya224.be22@chitkara.edu.in' },
-    { id: 3, name: 'sadsa', amount: 21300, icon: '🌐', createdBy: 'bhomya224.be22@chitkara.edu.in' }
+    { id: 6, name: 'Shopping', amount: 10000, icon: '👜', createdBy: 'chahat231.be22@chitkara.edu.in' },
+    { id: 5, name: 'Home Decor', amount: 10000, icon: '🦩', createdBy: 'chahat231.be22@chitkara.edu.in' },
+    { id: 4, name: 'Salon', amount: 5000, icon: '🐻', createdBy: 'chahat231.be22@chitkara.edu.in' },
+    { id: 3, name: 'Dinner', amount: 5000, icon: '🥐', createdBy: 'chahat231.be22@chitkara.edu.in' }
   ];
 
 
