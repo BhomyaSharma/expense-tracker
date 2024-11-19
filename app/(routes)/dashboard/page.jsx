@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react'
 import { UserButton, useUser } from '@clerk/nextjs'
 import CardInfo from './_components/CardInfo';
-import { db } from '@/db/drizzle';
+import { db } from '../../../db/drizzle';
 import { desc, eq, getTableColumns, sql } from 'drizzle-orm';
-import { Budgets, Expenses } from '@/db/schema';
+import { Budgets, Expenses } from '../../../db/schema';
 import BarChartDashboard from './budgets/_components/BarChartDashboard';
 import Budget from './budgets/page';
 import BudgetItem from './budgets/_components/BudgetItem';

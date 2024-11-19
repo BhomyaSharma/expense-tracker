@@ -1,7 +1,7 @@
 "use client"
-import { Button } from '@/components/ui/button';
-import { db } from '@/db/drizzle';
-import { Budgets, Expenses } from '@/db/schema';
+import { Button } from '../../../../../components/ui/button';
+import { db } from '../../../../../db/drizzle';
+import { Budgets, Expenses } from '../../../../../db/schema';
 import { useUser } from '@clerk/nextjs';
 import { eq, getTableColumns, sql, desc } from 'drizzle-orm';
 import { Trash } from 'lucide-react';
@@ -9,6 +9,7 @@ import React, {useEffect, useState} from 'react'
 import BudgetItem from '../../budgets/_components/BudgetItem';
 import AddExpense from '../_components/AddExpense';
 import ExpenseListTable from '../_components/ExpenseListTable';
+import upgrades from '../../upgrade/upgrades';
 import { useRouter } from 'next/navigation';
 
 import {
@@ -21,7 +22,7 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger,
-  } from "@/components/ui/alert-dialog"
+  } from "../../../../../components/ui/alert-dialog"
 import { toast } from 'sonner';
   
 function ExpensesScreen({params}) {
@@ -95,11 +96,11 @@ function ExpensesScreen({params}) {
     <div className='p-10'>
         <h2 className='text-2xl font-bold flex justify-between items-center'>My Expenses
         
-            <Button className="flex-gap-2" variant="destructive"> 
+            <Button className="flex-gap-2 z-10" variant="destructive"> 
             <Trash/>Delete</Button>
             <AlertDialog>
                 <AlertDialogTrigger asChild>
-                <Button className="flex-gap-2" variant="destructive"> 
+                <Button className="flex-gap-2 z-10" variant="destructive"> 
             <Trash/>Delete</Button>
             </AlertDialogTrigger>
             <AlertDialogContent>

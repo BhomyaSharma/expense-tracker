@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react'
 import CreateBudget from './CreateBudget'
 import { desc, eq, getTableColumns, sql } from 'drizzle-orm'
-import { Budgets, Expenses } from'@/db/schema'
+import { Budgets, Expenses } from'../../../../../db/schema'
 import { useUser } from '@clerk/nextjs'
-import { db } from '@/db/drizzle'
+import { db } from '../../../../../db/drizzle'
 import BudgetItem from './BudgetItem'
 
 function BudgetList() {

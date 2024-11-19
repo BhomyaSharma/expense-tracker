@@ -51,10 +51,10 @@
 
 
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { db } from '@/db/drizzle';
-import { Budgets, Expenses } from '@/db/schema'; // Import Expenses schema
+import { Button } from '../../../../../components/ui/button';
+import { Input } from '../../../../../components/ui/input';
+import { db } from '../../../../../db/drizzle';
+import { Budgets, Expenses } from '../../../../../db/schema'; // Import Expenses schema
 import React, { useState } from 'react';
 import { toast } from 'sonner';
 import moment from 'moment'; // Assuming you are using moment for date formatting

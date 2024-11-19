@@ -1,11 +1,11 @@
 "use client"
 import React, { useEffect } from 'react'
 import SideNav from './_components/SideNav'
-import { Budgets } from '@/db/schema.js'
+import { Budgets } from '../../../db/schema.js'
 import { useUser } from '@clerk/nextjs'
 import { eq } from 'drizzle-orm'
 
-import { db } from '@/db/drizzle'
+import { db } from '../../../db/drizzle'
 import DashboardHeader from './_components/DashboardHeader'
 import { useRouter } from 'next/navigation'
 

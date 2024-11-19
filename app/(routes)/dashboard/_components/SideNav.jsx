@@ -31,7 +31,7 @@ function SideNav() {
       id: 4,
       name: 'Upgrade',
       icon: ShieldCheck,
-      path: '/dashboard/upgrade',
+      path: '/dashboard/upgrade'
     },
   ];
 
