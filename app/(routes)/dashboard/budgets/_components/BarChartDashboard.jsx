@@ -1,15 +1,15 @@
 import React from 'react'
 import { Bar, BarChart, Legend, Tooltip, XAxis, YAxis } from 'recharts'
 
-function BarChartDashboard(budgetList) {
+function BarChartDashboard({budgetList}) {
   console.log(budgetList[0])
 
-  const data = [
-    { id: 6, name: 'Shopping', amount: 10000, icon: '👜', createdBy: 'chahat231.be22@chitkara.edu.in' },
-    { id: 5, name: 'Home Decor', amount: 10000, icon: '🦩', createdBy: 'chahat231.be22@chitkara.edu.in' },
-    { id: 4, name: 'Salon', amount: 5000, icon: '🐻', createdBy: 'chahat231.be22@chitkara.edu.in' },
-    { id: 3, name: 'Dinner', amount: 5000, icon: '🥐', createdBy: 'chahat231.be22@chitkara.edu.in' }
-  ];
+  // const data = [
+  //   { id: 6, name: 'Shopping', amount: 10000, icon: '👜', createdBy: 'chahat231.be22@chitkara.edu.in' },
+  //   { id: 5, name: 'Home Decor', amount: 10000, icon: '🦩', createdBy: 'chahat231.be22@chitkara.edu.in' },
+  //   { id: 4, name: 'Salon', amount: 5000, icon: '🐻', createdBy: 'chahat231.be22@chitkara.edu.in' },
+  //   { id: 3, name: 'Dinner', amount: 5000, icon: '🥐', createdBy: 'chahat231.be22@chitkara.edu.in' }
+  // ];
 
 
   return (
@@ -18,9 +18,12 @@ function BarChartDashboard(budgetList) {
       <BarChart
       width={500}
       height={300}
-      data={data}
+      data={budgetList}
       margin={{
-        top:7
+        top:5,
+        right:5,
+        left:5,
+        bottom:5,
 
       }}
       
