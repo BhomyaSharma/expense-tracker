@@ -72,16 +72,16 @@ function ExpensesScreen({ params }) {
     }
   };
 
-  const getExpensesList=async()=>{
+//   const getExpensesList=async()=>{
 
-    const result=await db.select().from(Expenses)
-    .where(eq(Expenses.budgetId,params.id))
-    .orderBy(desc(Expenses.id));
-    setExpensesList(result);
-    console.log(result)
+//     const result=await db.select().from(Expenses)
+//     .where(eq(Expenses.budgetId,params.id))
+//     .orderBy(desc(Expenses.id));
+//     setExpensesList(result);
+//     console.log(result)
     
 
-}
+// }
   
   const deleteBudget = async () => {
     // try {
@@ -95,15 +95,17 @@ function ExpensesScreen({ params }) {
     //   console.error("Error deleting budget:", error);
     //   toast.error("Failed to delete budget. Please try again.");
     // }
-    const deleteExpenseResult=await db.delete(Expenses)
-    .returning()
+    // const deleteExpenseResult=await db.delete(Expenses).where(
+    //   eq(Expenses.id,params.id)
+    // )
+    // .returning()
 
-    if(deleteExpenseResult){
+    // if(deleteExpenseResult){
       const result = await db.delete(Budgets)
       .where(eq(Budgets.id,params.id))
       .returning();
 
-    }
+    // }s
     toast('Budget Deleted !');
     route.replace('/dashboard/budgets')
   };
