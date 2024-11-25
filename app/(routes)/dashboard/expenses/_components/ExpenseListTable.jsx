@@ -67,12 +67,22 @@ function ExpenseListTable({ expensesList, refreshData }) { // Destructure props
 
   return (
     <div className='mt-3'>
-      <div className='grid grid-cols-4 bg-slate-200 p-2'>
-        <h2 className='font-bold'>Name</h2>
-        <h2 className='font-bold'>Amount</h2>
-        <h2 className='font-bold'>Date</h2>
-         <h2 className='font-bold'>Action</h2> 
-      </div>
+  {/* Animated heading for the expenses list */}
+  <h2 className='text-pink-600 font-extrabold text-2xl mb-4 text-center tracking-wide transition-transform transform hover:scale-105'>
+    Expenses List
+  </h2>
+
+  {/* Table header with a modern pink theme and subtle shadow */}
+  <div className='grid grid-cols-4 bg-pink-100 p-4 rounded-xl shadow-md'>
+    <h2 className='font-bold text-pink-800 text-lg tracking-wider'>Name</h2>
+    <h2 className='font-bold text-pink-800 text-lg tracking-wider'>Amount</h2>
+    <h2 className='font-bold text-pink-800 text-lg tracking-wider'>Date</h2>
+    <h2 className='font-bold text-pink-800 text-lg tracking-wider'>Action</h2>
+  </div>
+
+ 
+
+
       {Array.isArray(expensesList) && expensesList.length > 0 ? (
         expensesList.map((expenses, index) => (
           <div key={index} className='grid grid-cols-4 bg-slate-50 p-2'>

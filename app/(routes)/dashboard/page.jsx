@@ -72,6 +72,7 @@ function Dashboard() {
           <div className='md:col-span-2'>
               <BarChartDashboard
                 budgetList={budgetList}
+                suppressHydrationWarning
                 />
                 <ExpenseListTable
                 expensesList={expensesList}

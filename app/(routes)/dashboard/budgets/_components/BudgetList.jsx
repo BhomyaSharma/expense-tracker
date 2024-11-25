@@ -48,12 +48,12 @@ function BudgetList() {
 
         
         {budgetList?.length>0?budgetList.map((budget,index)=>(
-        <BudgetItem budget={budget}/>
+        <BudgetItem key={index} budget={budget}/>
 
         ))
       :
       [1,2,3,4,5].map((item,index)=>(
-        <div  className='w-full bg-slate-200 rounded-lg
+        <div key={index} className='w-full bg-slate-200 rounded-lg
         h-[150px] animate-pulse'>
 
         </div>
