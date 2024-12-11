@@ -1,219 +1,219 @@
-"use client";
-import React from "react";
+// "use client";
+// import React from "react";
 
-export default function Upgrades() {
-  const styles = {
-    container: {
-      padding: "2rem",
-      textAlign: "center",
-      fontFamily: "Arial, sans-serif",
-      backgroundColor: "#fff",
-    },
-    header: {
-      marginBottom: "2rem",
-    },
-    title: {
-      fontSize: "2rem",
-      color: "#333",
-      fontWeight: "bold",
-      marginBottom: "0.5rem",
-    },
-    subtitle: {
-      color: "#555",
-      fontSize: "1rem",
-    },
-    features: {
-      display: "flex",
-      justifyContent: "center",
-      gap: "1rem",
-      color: "#777",
-      fontSize: "0.9rem",
-      fontWeight: "500",
-      marginTop: "1rem",
-    },
-    cards: {
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-      gap: "2rem",
-      marginTop: "2rem",
-    },
-    card: {
-      backgroundColor: "#f9f9f9",
-      padding: "2rem",
-      borderRadius: "10px",
-      border: "1px solid #ddd",
-      transition: "transform 0.3s, box-shadow 0.3s",
-      textAlign: "center",
-      cursor: "pointer",
-    },
-    hoverEffect: {
-      transform: "scale(1.02)",
-      boxShadow: "0 8px 20px rgba(0, 0, 0, 0.1)",
-    },
-    titleCard: {
-      fontSize: "1.4rem",
-      color: "#333",
-      fontWeight: "bold",
-      marginBottom: "0.5rem",
-    },
-    description: {
-      color: "#777",
-      margin: "0.5rem 0 1rem",
-      fontSize: "0.95rem",
-    },
-    price: {
-      fontSize: "1.6rem",
-      color: "#333",
-      margin: "1rem 0",
-      fontWeight: "bold",
-    },
-    button: {
-      padding: "0.8rem",
-      backgroundColor: "#E973AB",
-      color: "#fff",
-      border: "none",
-      borderRadius: "5px",
-      fontWeight: "bold",
-      textDecoration: "none",
-      display: "inline-block",
-      textAlign: "center",
-      fontSize: "1rem",
-      marginTop: "1rem",
-      transition: "background-color 0.3s",
-    },
-    buttonHover: {
-      backgroundColor: "#C26192",
-    },
-    list: {
-      listStyleType: "none",
-      padding: 0,
-      color: "#555",
-      marginTop: "1.5rem",
-      fontSize: "0.9rem",
-      textAlign: "left",
-    },
-    listItem: {
-      marginBottom: "0.5rem",
-    },
-  };
+// export default function Upgrades() {
+//   const styles = {
+//     container: {
+//       padding: "2rem",
+//       textAlign: "center",
+//       fontFamily: "Arial, sans-serif",
+//       backgroundColor: "#fff",
+//     },
+//     header: {
+//       marginBottom: "2rem",
+//     },
+//     title: {
+//       fontSize: "2rem",
+//       color: "#333",
+//       fontWeight: "bold",
+//       marginBottom: "0.5rem",
+//     },
+//     subtitle: {
+//       color: "#555",
+//       fontSize: "1rem",
+//     },
+//     features: {
+//       display: "flex",
+//       justifyContent: "center",
+//       gap: "1rem",
+//       color: "#777",
+//       fontSize: "0.9rem",
+//       fontWeight: "500",
+//       marginTop: "1rem",
+//     },
+//     cards: {
+//       display: "grid",
+//       gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+//       gap: "2rem",
+//       marginTop: "2rem",
+//     },
+//     card: {
+//       backgroundColor: "#f9f9f9",
+//       padding: "2rem",
+//       borderRadius: "10px",
+//       border: "1px solid #ddd",
+//       transition: "transform 0.3s, box-shadow 0.3s",
+//       textAlign: "center",
+//       cursor: "pointer",
+//     },
+//     hoverEffect: {
+//       transform: "scale(1.02)",
+//       boxShadow: "0 8px 20px rgba(0, 0, 0, 0.1)",
+//     },
+//     titleCard: {
+//       fontSize: "1.4rem",
+//       color: "#333",
+//       fontWeight: "bold",
+//       marginBottom: "0.5rem",
+//     },
+//     description: {
+//       color: "#777",
+//       margin: "0.5rem 0 1rem",
+//       fontSize: "0.95rem",
+//     },
+//     price: {
+//       fontSize: "1.6rem",
+//       color: "#333",
+//       margin: "1rem 0",
+//       fontWeight: "bold",
+//     },
+//     button: {
+//       padding: "0.8rem",
+//       backgroundColor: "#E973AB",
+//       color: "#fff",
+//       border: "none",
+//       borderRadius: "5px",
+//       fontWeight: "bold",
+//       textDecoration: "none",
+//       display: "inline-block",
+//       textAlign: "center",
+//       fontSize: "1rem",
+//       marginTop: "1rem",
+//       transition: "background-color 0.3s",
+//     },
+//     buttonHover: {
+//       backgroundColor: "#C26192",
+//     },
+//     list: {
+//       listStyleType: "none",
+//       padding: 0,
+//       color: "#555",
+//       marginTop: "1.5rem",
+//       fontSize: "0.9rem",
+//       textAlign: "left",
+//     },
+//     listItem: {
+//       marginBottom: "0.5rem",
+//     },
+//   };
 
-  const plans = [
-    {
-      title: "SpendWise Premium Business",
-      description: "Scale your expense management",
-      price: "₹999/mo",
-      link: "https://buy.stripe.com/test_3cs5oob0x6xV2lO3cf",
-      features: [
-        "15 collaborators",
-        "Unlimited storage space",
-        "Advanced expense tracking suite",
-        "In-depth analytics and reporting",
-        "Customizable financial insights",
-        "Dedicated premium support",
-        "Seamless integrations with top accounting tools",
-        "Enhanced security features",
-      ],
-    },
-    {
-      title: "SpendWise Pro",
-      description: "Grow your financial management",
-      price: "₹799/mo",
-      link: "https://buy.stripe.com/test_3cs6ssecJcWjaSk9AC",
-      features: [
-        "10 collaborators",
-        "100 GB storage space",
-        "Comprehensive expense tracking suite",
-        "Customizable reports and insights",
-        "Dedicated customer support",
-        "Advanced security protocols",
-        "Payment gateway integration",
-      ],
-    },
-    {
-      title: "SpendWise Core",
-      description: "Engage your financial management",
-      price: "₹499/mo",
-      link: "https://buy.stripe.com/test_28o2cc3y58G39OgaEF",
-      features: [
-        "5 collaborators",
-        "50 GB storage space",
-        "Basic expense tracking features",
-        "Basic expense reports and analytics",
-        "Email support",
-        "Integration with basic accounting tools",
-        "Secure payment acceptance",
-      ],
-    },
-    {
-      title: "SpendWise Lite",
-      description: "Get the basics of financial tracking",
-      price: "₹199/mo",
-      link: "https://buy.stripe.com/test_eVa4kk5Gd4pN4tW000",
-      features: [
-        "2 collaborators",
-        "2 GB storage space",
-        "Basic expense tracking features",
-        "Simple expense reports",
-      ],
-    },
-  ];
+//   const plans = [
+//     {
+//       title: "SpendWise Premium Business",
+//       description: "Scale your expense management",
+//       price: "₹999/mo",
+//       link: "https://buy.stripe.com/test_3cs5oob0x6xV2lO3cf",
+//       features: [
+//         "15 collaborators",
+//         "Unlimited storage space",
+//         "Advanced expense tracking suite",
+//         "In-depth analytics and reporting",
+//         "Customizable financial insights",
+//         "Dedicated premium support",
+//         "Seamless integrations with top accounting tools",
+//         "Enhanced security features",
+//       ],
+//     },
+//     {
+//       title: "SpendWise Pro",
+//       description: "Grow your financial management",
+//       price: "₹799/mo",
+//       link: "https://buy.stripe.com/test_3cs6ssecJcWjaSk9AC",
+//       features: [
+//         "10 collaborators",
+//         "100 GB storage space",
+//         "Comprehensive expense tracking suite",
+//         "Customizable reports and insights",
+//         "Dedicated customer support",
+//         "Advanced security protocols",
+//         "Payment gateway integration",
+//       ],
+//     },
+//     {
+//       title: "SpendWise Core",
+//       description: "Engage your financial management",
+//       price: "₹499/mo",
+//       link: "https://buy.stripe.com/test_28o2cc3y58G39OgaEF",
+//       features: [
+//         "5 collaborators",
+//         "50 GB storage space",
+//         "Basic expense tracking features",
+//         "Basic expense reports and analytics",
+//         "Email support",
+//         "Integration with basic accounting tools",
+//         "Secure payment acceptance",
+//       ],
+//     },
+//     {
+//       title: "SpendWise Lite",
+//       description: "Get the basics of financial tracking",
+//       price: "₹199/mo",
+//       link: "https://buy.stripe.com/test_eVa4kk5Gd4pN4tW000",
+//       features: [
+//         "2 collaborators",
+//         "2 GB storage space",
+//         "Basic expense tracking features",
+//         "Simple expense reports",
+//       ],
+//     },
+//   ];
 
-  return (
-    <div style={styles.container}>
-      <div style={styles.header}>
-        <h1 style={styles.title}>Choose the Premium Plan That Fits Your Needs</h1>
-        <p style={styles.subtitle}>All plans include:</p>
-        <div style={styles.features}>
-          <span>Custom domain</span>
-          <span>No branding</span>
-          <span>24/7 customer care</span>
-          <span>Seamless integrations</span>
-        </div>
-      </div>
+//   return (
+//     <div style={styles.container}>
+//       <div style={styles.header}>
+//         <h1 style={styles.title}>Choose the Premium Plan That Fits Your Needs</h1>
+//         <p style={styles.subtitle}>All plans include:</p>
+//         <div style={styles.features}>
+//           <span>Custom domain</span>
+//           <span>No branding</span>
+//           <span>24/7 customer care</span>
+//           <span>Seamless integrations</span>
+//         </div>
+//       </div>
 
-      <div style={styles.cards}>
-        {plans.map((plan, index) => (
-          <div
-            key={index}
-            style={styles.card}
-            onMouseOver={(e) => {
-              Object.assign(e.currentTarget.style, styles.hoverEffect);
-            }}
-            onMouseOut={(e) => {
-              Object.assign(e.currentTarget.style, {
-                transform: "scale(1)",
-                boxShadow: "none",
-              });
-            }}
-          >
-            <h3 style={styles.titleCard}>{plan.title}</h3>
-            <p style={styles.description}>{plan.description}</p>
-            <h2 style={styles.price}>{plan.price}</h2>
-            <a
-              href={plan.link}
-              style={styles.button}
-              onMouseOver={(e) =>
-                (e.target.style.backgroundColor = styles.buttonHover.backgroundColor)
-              }
-              onMouseOut={(e) =>
-                (e.target.style.backgroundColor = styles.button.backgroundColor)
-              }
-            >
-              Select
-            </a>
-            <ul style={styles.list}>
-              {plan.features.map((feature, featureIndex) => (
-                <li key={featureIndex} style={styles.listItem}>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+//       <div style={styles.cards}>
+//         {plans.map((plan, index) => (
+//           <div
+//             key={index}
+//             style={styles.card}
+//             onMouseOver={(e) => {
+//               Object.assign(e.currentTarget.style, styles.hoverEffect);
+//             }}
+//             onMouseOut={(e) => {
+//               Object.assign(e.currentTarget.style, {
+//                 transform: "scale(1)",
+//                 boxShadow: "none",
+//               });
+//             }}
+//           >
+//             <h3 style={styles.titleCard}>{plan.title}</h3>
+//             <p style={styles.description}>{plan.description}</p>
+//             <h2 style={styles.price}>{plan.price}</h2>
+//             <a
+//               href={plan.link}
+//               style={styles.button}
+//               onMouseOver={(e) =>
+//                 (e.target.style.backgroundColor = styles.buttonHover.backgroundColor)
+//               }
+//               onMouseOut={(e) =>
+//                 (e.target.style.backgroundColor = styles.button.backgroundColor)
+//               }
+//             >
+//               Select
+//             </a>
+//             <ul style={styles.list}>
+//               {plan.features.map((feature, featureIndex) => (
+//                 <li key={featureIndex} style={styles.listItem}>
+//                   {feature}
+//                 </li>
+//               ))}
+//             </ul>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
 
 
 
@@ -424,3 +424,292 @@ export default function Upgrades() {
 //     </div>
 //   );
 // }
+
+
+
+"use client";
+
+import React, { useState } from "react";
+
+export default function Page() {
+  const [currentPlan, setCurrentPlan] = useState("SpendWise Pro");
+
+  const plans = [
+    {
+      title: "SpendWise Premium Business",
+      description: "Scale your expense management",
+      price: "₹999/mo",
+      link: "https://buy.stripe.com/test_3cs5oob0x6xV2lO3cf",
+      features: [
+        "15 collaborators",
+        "Unlimited storage space",
+        "Advanced expense tracking suite",
+        "In-depth analytics and reporting",
+        "Customizable financial insights",
+        "Dedicated premium support",
+        "Seamless integrations with top accounting tools",
+        "Enhanced security features",
+      ],
+    },
+    {
+      title: "SpendWise Pro",
+      description: "Grow your financial management",
+      price: "₹799/mo",
+      link: "https://buy.stripe.com/test_3cs6ssecJcWjaSk9AC",
+      features: [
+        "10 collaborators",
+        "100 GB storage space",
+        "Comprehensive expense tracking suite",
+        "Customizable reports and insights",
+        "Dedicated customer support",
+        "Advanced security protocols",
+        "Payment gateway integration",
+      ],
+    },
+    {
+      title: "SpendWise Core",
+      description: "Engage your financial management",
+      price: "₹499/mo",
+      link: "https://buy.stripe.com/test_28o2cc3y58G39OgaEF",
+      features: [
+        "5 collaborators",
+        "50 GB storage space",
+        "Basic expense tracking features",
+        "Basic expense reports and analytics",
+        "Email support",
+        "Integration with basic accounting tools",
+        "Secure payment acceptance",
+      ],
+    },
+    {
+      title: "SpendWise Lite",
+      description: "Get the basics of financial tracking",
+      price: "₹199/mo",
+      link: "https://buy.stripe.com/test_eVa4kk5Gd4pN4tW000",
+      features: [
+        "2 collaborators",
+        "2 GB storage space",
+        "Basic expense tracking features",
+        "Simple expense reports",
+      ],
+    },
+  ];
+
+  const styles = {
+    container: {
+      padding: "2rem",
+      textAlign: "center",
+      fontFamily: "Arial, sans-serif",
+      backgroundColor: "#fff",
+    },
+    header: {
+      marginBottom: "2rem",
+    },
+    title: {
+      fontSize: "2rem",
+      color: "#333",
+      fontWeight: "bold",
+      marginBottom: "0.5rem",
+    },
+    subtitle: {
+      color: "#555",
+      fontSize: "1rem",
+    },
+    features: {
+      display: "flex",
+      justifyContent: "center",
+      gap: "1rem",
+      color: "#777",
+      fontSize: "0.9rem",
+      fontWeight: "500",
+      marginTop: "1rem",
+    },
+    cards: {
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+      gap: "2rem",
+      marginTop: "2rem",
+    },
+    card: {
+      backgroundColor: "#f9f9f9",
+      padding: "2rem",
+      borderRadius: "10px",
+      border: "1px solid #ddd",
+      transition: "transform 0.3s, box-shadow 0.3s",
+      textAlign: "center",
+      cursor: "pointer",
+    },
+    currentCard: {
+      backgroundColor: "#ffe6f2", // Lighter pink for the current plan
+      border: "2px solid #ff66b2", // Subtle pink border
+    },
+    hoverEffect: {
+      transform: "scale(1.02)",
+      boxShadow: "0 8px 20px rgba(0, 0, 0, 0.1)",
+    },
+    titleCard: {
+      fontSize: "1.4rem",
+      color: "#333",
+      fontWeight: "bold",
+      marginBottom: "0.5rem",
+    },
+    description: {
+      color: "#777",
+      margin: "0.5rem 0 1rem",
+      fontSize: "0.95rem",
+    },
+    price: {
+      fontSize: "1.6rem",
+      color: "#333",
+      margin: "1rem 0",
+      fontWeight: "bold",
+    },
+    button: {
+      padding: "0.8rem",
+      backgroundColor: "#E973AB",
+      color: "#fff",
+      border: "none",
+      borderRadius: "5px",
+      fontWeight: "bold",
+      textDecoration: "none",
+      display: "inline-block",
+      textAlign: "center",
+      fontSize: "1rem",
+      marginTop: "1rem",
+      transition: "background-color 0.3s",
+    },
+    buttonDisabled: {
+      backgroundColor: "#ccc", // Gray for the disabled button
+      cursor: "not-allowed",
+    },
+    buttonHover: {
+      backgroundColor: "#C26192",
+    },
+    list: {
+      listStyleType: "none",
+      padding: 0,
+      color: "#555",
+      marginTop: "1.5rem",
+      fontSize: "0.9rem",
+      textAlign: "left",
+    },
+    listItem: {
+      marginBottom: "0.5rem",
+    },
+    dialogBox: {
+      padding: "2rem",
+      backgroundColor: "#fff",
+      borderRadius: "8px",
+      maxWidth: "400px",
+      margin: "0 auto",
+      boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+      textAlign: "center",
+      fontSize: "1rem",
+    },
+    dialogTitle: {
+      fontSize: "1.6rem",
+      fontWeight: "bold",
+      color: "#333",
+      marginBottom: "1rem",
+    },
+    dialogButtons: {
+      display: "flex",
+      justifyContent: "space-around",
+      gap: "1rem",
+      marginTop: "1rem",
+    },
+    dialogButton: {
+      padding: "0.8rem 1.5rem",
+      fontSize: "1rem",
+      fontWeight: "bold",
+      border: "none",
+      borderRadius: "5px",
+      cursor: "pointer",
+      transition: "background-color 0.3s",
+    },
+    dialogConfirm: {
+      backgroundColor: "#E973AB",
+      color: "#fff",
+    },
+    dialogCancel: {
+      backgroundColor: "#ccc",
+      color: "#333",
+    },
+    dialogButtonHover: {
+      backgroundColor: "#C26192",
+    },
+  };
+
+  function handleUpgrade(plan, link) {
+    if (plan === currentPlan) {
+      alert("You're already on this plan!");
+    } else {
+      const dialog = window.confirm(
+        `Do you want to upgrade from ${currentPlan} to ${plan}? You will be redirected to the payment page.`
+      );
+      if (dialog) {
+        setCurrentPlan(plan);
+        window.location.href = link; // Redirect to Stripe payment page
+      }
+    }
+  }
+
+  return (
+    <div style={styles.container}>
+      <div style={styles.header}>
+        <h1 style={styles.title}>Choose the Premium Plan That Fits Your Needs</h1>
+        <p style={styles.subtitle}>All plans include:</p>
+        <div style={styles.features}>
+          <span>Custom domain</span>
+          <span>No branding</span>
+          <span>24/7 customer care</span>
+          <span>Seamless integrations</span>
+        </div>
+      </div>
+
+      <div style={styles.cards}>
+        {plans.map((plan, index) => (
+          <div
+            key={index}
+            style={{
+              ...styles.card,
+              ...(currentPlan === plan.title ? styles.currentCard : {}),
+            }}
+            onMouseOver={(e) => {
+              Object.assign(e.currentTarget.style, styles.hoverEffect);
+            }}
+            onMouseOut={(e) => {
+              Object.assign(e.currentTarget.style, {
+                transform: "scale(1)",
+                boxShadow: "none",
+              });
+            }}
+          >
+            <h3 style={styles.titleCard}>{plan.title}</h3>
+            <p style={styles.description}>{plan.description}</p>
+            <h2 style={styles.price}>{plan.price}</h2>
+            <a
+              onClick={(e) => {
+                e.preventDefault();
+                handleUpgrade(plan.title, plan.link);
+              }}
+              style={{
+                ...styles.button,
+                ...(currentPlan === plan.title ? styles.buttonDisabled : {}),
+              }}
+            >
+              {currentPlan === plan.title ? "Current Plan" : "Select"}
+            </a>
+            <ul style={styles.list}>
+              {plan.features.map((feature, featureIndex) => (
+                <li key={featureIndex} style={styles.listItem}>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
