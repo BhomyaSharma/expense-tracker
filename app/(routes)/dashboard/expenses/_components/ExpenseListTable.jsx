@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // import { db } from '@/db/drizzle'
 // import { Expenses } from '@/db/schema'
 // import { eq } from 'drizzle-orm'
@@ -441,67 +440,73 @@
 
 
 
-
-=======
-import React, { useEffect, useState } from "react";
->>>>>>> 9213a730a163cf4a1a61e027e17822f327448e56
 import { db } from '../../../../../db/drizzle';
 import { Expenses } from '../../../../../db/schema';
 import { eq } from 'drizzle-orm';
 import { Trash } from 'lucide-react';
-<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 
 function ExpenseListTable({ expensesList, refreshData }) {
-  // State to handle sort options
+  // States
   const [sortBy, setSortBy] = useState('Date');
   const [sortOrder, setSortOrder] = useState('Ascending');
   const [searchTerm, setSearchTerm] = useState('');
-
-  // Handle sorting logic
-  const sortExpenses = () => {
-    return [...expensesList]
-      .filter((expense) => {
-        return (
-          expense.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          expense.amount.toString().includes(searchTerm) ||
-          expense.createdAt.includes(searchTerm)
-        );
-      })
-      .sort((a, b) => {
-        let aValue, bValue;
-
-        if (sortBy === 'Amount') {
-          aValue = parseFloat(a.amount);
-          bValue = parseFloat(b.amount);
-        } else if (sortBy === 'Date') {
-          aValue = new Date(a.createdAt);
-          bValue = new Date(b.createdAt);
-        } else {
-          aValue = a.name.toLowerCase();
-          bValue = b.name.toLowerCase();
-        }
-
-        if (sortOrder === 'Ascending') {
-          return aValue < bValue ? -1 : aValue > bValue ? 1 : 0;
-        } else {
-          return aValue > bValue ? -1 : aValue < bValue ? 1 : 0;
-        }
-      });
-  };
-
-  const sortedExpenses = sortExpenses();
-=======
-import { toast } from 'sonner';
-
-function ExpenseListTable({ expensesList, refreshData }) {
-  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [selectedFilters, setSelectedFilters] = useState([]); 
   const [filteredExpenses, setFilteredExpenses] = useState(expensesList);
->>>>>>> 9213a730a163cf4a1a61e027e17822f327448e56
 
   // Define expense categories for filtering
   const categories = ["Food", "Travel", "Entertainment"];
+
+  // Handle sorting logic
+  const sortExpenses = (expenses) => {
+    return expenses.sort((a, b) => {
+      let aValue, bValue;
+
+      if (sortBy === 'Amount') {
+        aValue = parseFloat(a.amount);
+        bValue = parseFloat(b.amount);
+      } else if (sortBy === 'Date') {
+        aValue = new Date(a.createdAt);
+        bValue = new Date(b.createdAt);
+      } else {
+        aValue = a.name.toLowerCase();
+        bValue = b.name.toLowerCase();
+      }
+
+      if (sortOrder === 'Ascending') {
+        return aValue < bValue ? -1 : aValue > bValue ? 1 : 0;
+      } else {
+        return aValue > bValue ? -1 : aValue < bValue ? 1 : 0;
+      }
+    });
+  };
+
+  // Filter and sort expenses whenever dependencies change
+  useEffect(() => {
+    let tempExpenses = [...expensesList];
+
+    // Apply search filter
+    if (searchTerm) {
+      tempExpenses = tempExpenses.filter((expense) =>
+        expense.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        expense.amount.toString().includes(searchTerm) ||
+        expense.createdAt.includes(searchTerm)
+      );
+    }
+
+    // Apply category filters
+    if (selectedFilters.length > 0) {
+      tempExpenses = tempExpenses.filter((expense) =>
+        selectedFilters.includes(expense.category)
+      );
+    }
+
+    // Apply sorting
+    tempExpenses = sortExpenses(tempExpenses);
+
+    setFilteredExpenses(tempExpenses);
+  }, [searchTerm, selectedFilters, sortBy, sortOrder, expensesList]);
 
   // Handle filter button clicks
   const handleFilterButtonClick = (selectedCategory) => {
@@ -511,18 +516,6 @@ function ExpenseListTable({ expensesList, refreshData }) {
       setSelectedFilters([...selectedFilters, selectedCategory]);
     }
   };
-
-  // Filter expenses whenever selectedFilters or expensesList changes
-  useEffect(() => {
-    if (selectedFilters.length > 0) {
-      const tempFiltered = expensesList.filter((expense) =>
-        selectedFilters.includes(expense.category)
-      );
-      setFilteredExpenses(tempFiltered);
-    } else {
-      setFilteredExpenses(expensesList);
-    }
-  }, [selectedFilters, expensesList]);
 
   // Delete an expense
   const deleteExpense = async (expense) => {
@@ -539,52 +532,60 @@ function ExpenseListTable({ expensesList, refreshData }) {
 
   return (
     <div className='mt-3'>
-<<<<<<< HEAD
       {/* Search bar */}
       <div className='mb-4'>
         <input
           type='text'
           placeholder='Search by name, amount or date'
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)} // Ensure this is updating the searchTerm state
+          onChange={(e) => setSearchTerm(e.target.value)}
           className='p-2 border border-pink-300 rounded-lg w-full'
         />
       </div>
 
-      {/* Sort options - closer together */}
-      <div className='flex justify-start items-center gap-4 mb-4'>
-        <div className='flex items-center'>
-          <label htmlFor='sortBy' className='mr-2'>Sort by:</label>
+      {/* Filters and Sorting */}
+      <div className='flex justify-between items-center mb-4'>
+        {/* Filter Buttons */}
+        <div className='flex space-x-4'>
+          {categories.map((category, idx) => (
+            <button
+              key={`filter-${idx}`}
+              onClick={() => handleFilterButtonClick(category)}
+              className={`px-4 py-2 rounded-lg border ${
+                selectedFilters.includes(category)
+                  ? "bg-pink-500 text-white"
+                  : "bg-white text-pink-500 border-pink-500"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+{/* Sort Options */}
+        <div className='flex items-center gap-4'>
           <select
-            id='sortBy'
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className='p-2 border border-pink-300 rounded-lg'>
+            className='p-2 border border-pink-300 rounded-lg'
+          >
             <option value='Date'>Date</option>
             <option value='Amount'>Amount</option>
             <option value='Name'>Name</option>
           </select>
-        </div>
 
-        <div className='flex items-center'>
-          <label htmlFor='sortOrder' className='mr-2'>Order:</label>
           <select
-            id='sortOrder'
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value)}
-            className='p-2 border border-pink-300 rounded-lg'>
+            className='p-2 border border-pink-300 rounded-lg'
+          >
             <option value='Ascending'>Ascending</option>
             <option value='Descending'>Descending</option>
           </select>
         </div>
       </div>
 
-      {/* Animated heading for the expenses list */}
-      <h2 className='text-pink-600 font-extrabold text-2xl mb-4 text-center tracking-wide transition-transform transform hover:scale-105'>
-        Expenses List
-      </h2>
-
-      {/* Table header with a modern pink theme and subtle shadow */}
+      {/* Table Header */}
       <div className='grid grid-cols-4 bg-pink-100 p-4 rounded-xl shadow-md'>
         <h2 className='font-bold text-pink-800 text-lg tracking-wider'>Name</h2>
         <h2 className='font-bold text-pink-800 text-lg tracking-wider'>Amount</h2>
@@ -592,51 +593,13 @@ function ExpenseListTable({ expensesList, refreshData }) {
         <h2 className='font-bold text-pink-800 text-lg tracking-wider'>Action</h2>
       </div>
 
-      {Array.isArray(sortedExpenses) && sortedExpenses.length > 0 ? (
-        sortedExpenses.map((expense, index) => (
-          <div key={index} className='grid grid-cols-4 bg-slate-50 p-2'>
-            <h2>{expense.name}</h2>
-            <h2>{expense.amount}</h2>
-            <h2>{expense.createdAt}</h2>
-=======
-      {/* Heading */}
-      <h2 className='text-pink-600 font-extrabold text-2xl mb-4 text-center tracking-wide transition-transform transform hover:scale-105'>
-        Expenses List
-      </h2>
-
-      {/* Filter Buttons */}
-      <div className="flex justify-center space-x-4 mb-4">
-        {categories.map((category, idx) => (
-          <button
-            key={`filter-${idx}`}
-            onClick={() => handleFilterButtonClick(category)}
-            className={`px-4 py-2 rounded-lg border ${
-              selectedFilters.includes(category)
-                ? "bg-pink-500 text-white"
-                : "bg-white text-pink-500 border-pink-500"
-            }`}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-      {/* Table Header */}
-      <div className='grid grid-cols-4 bg-pink-100 p-4 rounded-xl shadow-md'>
-        <h2 className='font-bold text-pink-800 text-lg tracking-wider'>Name</h2>
-        <h2 className='font-bold text-pink-800 text-lg tracking-wider'>Amount</h2>
-        <h2 className='font-bold text-pink-800 text-lg tracking-wider'>Category</h2>
-        <h2 className='font-bold text-pink-800 text-lg tracking-wider'>Action</h2>
-      </div>
-
-      {/* Filtered Expenses */}
-      {Array.isArray(filteredExpenses) && filteredExpenses.length > 0 ? (
+      {/* Filtered and Sorted Expenses */}
+      {filteredExpenses.length > 0 ? (
         filteredExpenses.map((expense, index) => (
           <div key={index} className='grid grid-cols-4 bg-slate-50 p-2'>
             <h2>{expense.name}</h2>
             <h2>{expense.amount}</h2>
-            <h2>{expense.category}</h2>
->>>>>>> 9213a730a163cf4a1a61e027e17822f327448e56
+            <h2>{expense.createdAt}</h2>
             <h2>
               <Trash
                 className='text-red-600 cursor-pointer'
@@ -646,10 +609,11 @@ function ExpenseListTable({ expensesList, refreshData }) {
           </div>
         ))
       ) : (
-        <p className="text-center mt-4 text-gray-500">No expenses available</p>
+        <p className='text-center mt-4 text-gray-500'>No expenses available</p>
       )}
     </div>
   );
 }
 
 export default ExpenseListTable;
+
