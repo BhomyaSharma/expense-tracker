@@ -9,7 +9,7 @@ function Header() {
   const { user, isSignedIn } = useUser();
 
   return (
-    <div className='p-5 flex justify-between items-center border shadow-md'>
+    <div className='p-5 flex justify-between items-center '>
       <Image 
         src={'/logo.jpg'} 
         alt='dashboard'
