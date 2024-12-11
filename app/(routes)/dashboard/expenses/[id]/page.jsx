@@ -29,7 +29,7 @@ import { useRouter } from "next/navigation";
 function ExpensesScreen({ params }) {
   const { user } = useUser();
   const [BudgetInfo, setBudgetInfo] = useState();
-  const [expensesList, setExpensesList] = useState([]);
+  const [expensesList, setExpensesList] = useState();
   const [loading, setLoading] = useState(false);
   const route = useRouter();
 
@@ -72,40 +72,24 @@ function ExpensesScreen({ params }) {
     }
   };
 
-//   const getExpensesList=async()=>{
+  const getExpensesList=async()=>{
 
-//     const result=await db.select().from(Expenses)
-//     .where(eq(Expenses.budgetId,params.id))
-//     .orderBy(desc(Expenses.id));
-//     setExpensesList(result);
-//     console.log(result)
+    const result=await db.select().from(Expenses)
+    .where(eq(Expenses.budgetId,params.id))
+    .orderBy(desc(Expenses.id));
+    setExpensesList(result);
+    console.log(result)
     
 
-// }
+}
   
   const deleteBudget = async () => {
-    // try {
-    //   await db.transaction(async (tx) => {
-    //     await tx.delete(Expenses).where(eq(Expenses.budgetId, params.id));
-    //     await tx.delete(Budgets).where(eq(Budgets.id, params.id));
-    //   });
-    //   toast.success("Budget Deleted!");
-    //   route.replace("/dashboard/budgets");
-    // } catch (error) {
-    //   console.error("Error deleting budget:", error);
-    //   toast.error("Failed to delete budget. Please try again.");
-    // }
-    // const deleteExpenseResult=await db.delete(Expenses).where(
-    //   eq(Expenses.id,params.id)
-    // )
-    // .returning()
-
-    // if(deleteExpenseResult){
+   
       const result = await db.delete(Budgets)
       .where(eq(Budgets.id,params.id))
       .returning();
 
-    // }s
+  
     toast('Budget Deleted !');
     route.replace('/dashboard/budgets')
   };
